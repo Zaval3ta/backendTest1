@@ -4,6 +4,7 @@ export interface ITrucks extends Document {
   year: string;
   color: string;
   plates: string;
+  users: [];
 }
 
 export interface ITrucksRepository extends IRepository<ITrucks> {}

@@ -16,6 +16,11 @@ const TrucksSchema: Schema = new Schema<ITrucks>(
       required: true,
       unique: true
     },
+    users: [{
+      ref: "user",
+      type: Schema.Types.ObjectId
+    }
+    ]
   },
   {
     timestamps: true,
