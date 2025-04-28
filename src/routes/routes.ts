@@ -12,7 +12,7 @@ export default () => {
   router.post("/auth/login", loginUser)
   // Users Routes
   router.get("/users",verifyToken, findUsers);
-  router.get("/users/:id",verifyToken findUsersById);
+  router.get("/users/:id",verifyToken, findUsersById);
   router.post("/users",verifyToken, createUser);
   router.put("/users/:id",verifyToken, updateUser);
   router.delete("/users/:id",verifyToken, deleteUser);
