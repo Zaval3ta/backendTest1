@@ -1,44 +1,81 @@
-Prueba backend
-.env -> No se debe dejar a la vista por temas de seguridad, pero por requisitos se subio al repositorio
+# Prueba backend
 
-Para esta prueba utilice el patron repositorio
-¿Porque?
+Este proyecto es un sistema backend para gestionar usuarios, y camiones. Está construido con Node.js, Express y MongoDB, utilizando TypeScript para la seguridad de tipos y mejor experiencia del desarrollador.
 
-El patron repositorio es una abstraccion que actua como intermediario entre la aplicacion y la capa
-de acceso a datos, en este caso la base de datos MongoDB.
+## Características
 
-Beneficios del Patrón Repositorio:
-Desacople: Separa la lógica de negocio de la infraestructura
+- Patrón Repositorio.
+- Interfaces.
+- Autenticación y autorización de usuarios.
+- Gestión de usuarios (operaciones CRUD).
+- Middleware personalizado para autenticación.
+- Integración con MongoDB para la persistencia de datos.
+- TypeScript para mejorar la comprobación de tipos y la calidad del código.
 
-Testabilidad: Fácil de mockear en pruebas unitarias
 
-Flexibilidad: Cambiar de MongoDB a SQL solo requiere nueva implementación
+## ¿Por qué elegí el Patrón Repositorio?
 
-Mantenibilidad: Código más organizado y predecible
+El Patrón Repositorio es una abstracción que actúa como intermediario entre la lógica de negocio de la aplicación y la capa de acceso a datos (en este caso, MongoDB). Su implementación ofrece ventajas clave en proyectos escalables y mantenibles.
 
-Usamos un repositorio para que se encarge de las operaciones de persistencia, como crear,
-leer, actualizar y eliminar (CRUD). Con esto logramos separar la base de datos con la logica de negocio y el servicios del mismo.
 
-Con esto logramos hacer cambios en la base de datos sin afectar al resto de la aplicacion
+## Dominio protegido
+Los servicios de negocio dependen de abstracciones (interfaces), no de detalles concretos (MongoDB). 
 
-Este enfoque es especialmente valioso en aplicaciones complejas donde se necesita:
 
-Cambiar de base de datos fácilmente
+## Interfaces como contrato
 
-Mantener un dominio rico y desacoplado
+Definí interfaces para los repositorios (ej: IUserService y IUserRepository), garantizando que las implementaciones cumplan con los métodos requeridos. TypeScript valida estos contratos en tiempo de compilación.
 
-Tener un código altamente testeable
+- Ventaja: Las interfaces documentan el comportamiento esperado y facilitan el trabajo en equipo.
 
-Trabajar en equipos grandes con responsabilidades separadas
 
-Utilizamos interfaces para poder lograr un diseño limpio y mantenible y las interfaces permiten que los módulos de alto nivel (lógica de negocio) no dependan de módulos de bajo nivel (acceso a datos), sino de abstracciones. Tambien sirven como documentación viva de lo que debe implementar cada repositorio.
+## Tecnologías
 
-Las interfaces nos brindan flexibilidad, mantenibilidad y testabilidad, mientras TypeScript asegura que las implementaciones cumplan con los contratos definidos.
+- Nodejs
+- TypeScript
+- Express: Framework ágil para la API.
+- MongoDB
+- Mongoose (ODM)
+- bcrypt: Encriptación de contraseñas.
+- JSON Web Tokens (JWT) para la autenticación segura mediante tokens.
+- REST Client (VSCode): Pruebas de endpoints sin salir del editor.
 
-Se utilizaron heramientas como: 
-jsonwebtoken: Para el token de login de usuarios
-bcrypt: Poder encriptar la contraseña del usuario
-express: Simplicidad, flexibilidad y rendimiento para poder crear la API
-morgan: Generar logs con información útil sobre cada request, monitoreo y registro de actividad
+## Estructura del proyecto
 
-REST Client con VSCODE para poder hacer las pruebas sin necesidad de salir del editor de codigo.
+El proyecto está organizado en varios directorios clave:
+
+- `src/`: Contiene el código fuente TypeScript.
+  - `config/`: Configuración de mongoDB.
+  - `controllers/`: Maneja el procesamiento de solicitudes y la generación de respuestas.
+  - `middlewares/`: Middleware personalizado para autenticación y permisos.
+  - `models/`:  Modelos Mongoose para la interacción con la base de datos.
+  - `repositories/`:  Capa de acceso a datos para operaciones de base de datos.
+  - `routes/`: rutas de la API.
+  - `services/`: Capa de lógica de negocio.
+  - `types/`: Definiciones de interfaces para la creacion del proyecto.
+  - `http/`: Archivos HTTP proporcionados para interactuar con la API.
+- `@types/`: Definiciones de tipos personalizadas para bibliotecas externas.
+- `app.ts`: Configuración del servidor local.
+- `.env`:  variables de entorno.
+
+## Uso
+
+La API proporciona endpoints para la gestión de usuarios, autenticación y operaciones de los camiones. Se puede utilizar herramientas como Postman o los archivos HTTP proporcionados (`auth.http`, `users.http`, `trucks.http`) para interactuar con la API.
+
+- Estos archivos se encuentran en la carpeta http y es necesaria la extension REST Client de VSCode
+
+### Endpoints
+
+- Autenticación: `/api/auth/login`, `/api/auth/register`
+- Users: `/api/users`
+- Trucks: `/api/trucks`
+
+## Desarrollo
+
+Para el desarrollo, utilice el siguiente script npm:
+
+- `npm run dev`: Inicia el servidor de desarrollo
+
+## Conclusión
+
+El Patrón Repositorio no solo organizó el código, sino que lo hizo resistente a cambios, fácil de testear y escalable.
