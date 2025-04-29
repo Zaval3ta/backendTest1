@@ -1,7 +1,9 @@
 Prueba backend
 .env -> No se debe dejar a la vista por temas de seguridad, pero por requisitos se subio al repositorio
+
 Para esta prueba utilice el patron repositorio
 ¿Porque?
+
 El patron repositorio es una abstraccion que actua como intermediario entre la aplicacion y la capa
 de acceso a datos, en este caso la base de datos MongoDB.
 
