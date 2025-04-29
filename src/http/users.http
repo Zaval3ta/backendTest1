@@ -1,0 +1,33 @@
+POST http://localhost:4000/api/users
+Content-Type: application/json
+Authorization: Bearer JWT
+{
+  "username": "test2",
+  "email": "test2@gmail.com",
+  "password": "22102000"
+}
+
+###
+GET http://localhost:4000/api/users
+Content-Type: application/json
+Authorization: Bearer JWT
+
+###
+GET http://localhost:4000/api/users/id
+Content-Type: application/json
+Authorization: Bearer JWT
+
+###
+PUT http://localhost:4000/api/users/id
+Content-Type: application/json
+Authorization: Bearer JWT
+{
+  "username": "",
+  "email": "",
+  "password": ""
+}
+
+
+###
+DELETE http://localhost:4000/api/users/id
+Authorization: Bearer JWT

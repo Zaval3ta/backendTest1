@@ -1,0 +1,33 @@
+POST http://localhost:4000/api/trucks
+Content-Type: application/json
+Authorization: Bearer JWT
+{
+  "year": "2020",
+  "color": "Rojo",
+  "plates": "XX-XX-XX"
+}
+
+###
+GET http://localhost:4000/api/trucks
+Content-Type: application/json
+Authorization: Bearer JWT
+
+###
+GET http://localhost:4000/api/trucks/id
+Content-Type: application/json
+Authorization: Bearer JWT
+
+###
+PUT http://localhost:4000/api/trucks/id
+Content-Type: application/json
+Authorization: Bearer JWT
+{
+  "year": "",
+  "color": "",
+  "plates": ""
+}
+
+
+###
+DELETE http://localhost:4000/api/trucks/id
+Authorization: Bearer JWT
